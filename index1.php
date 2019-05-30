@@ -5,10 +5,10 @@
 /////////////////////////////////////
 
 // Create f3 object then set various global properties of it
-// These are available to the routing code below, but also to any 
+// These are available to the routing code below, but also to any
 // classes defined in autoloaded definitions
 
-$f3 = require('../../../AboveWebRoot/fatfree-master/lib/base.php');
+$$f3 = require('/home/'.get_current_user().'/AboveWebRoot/fatfree-master/lib/base.php');
 
 $f3->set('DEBUG',3);		// set maximum debug level
 $f3->set('UI','ui/');		// folder for View templates
@@ -44,9 +44,9 @@ $f3->route('POST /simpleform',
 	$formdata = array();			// array to pass on the entered data in
 	$formdata["name"] = $f3->get('POST.name');			// whatever was called "name" on the form
 	$formdata["colour"] = $f3->get('POST.colour');		// whatever was called "colour" on the form
-	
+
 	$f3->set('formData', $formdata);
-		
+
     $f3->set('html_title','Simple Example Response');
 	$f3->set('content','response.html');
 	echo template::instance()->render('layout.html');
@@ -60,4 +60,3 @@ $f3->route('POST /simpleform',
 $f3->run();
 
 ?>
-

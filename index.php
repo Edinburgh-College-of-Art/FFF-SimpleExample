@@ -5,13 +5,14 @@
 /////////////////////////////////////
 
 // Create f3 object then set various global properties of it
-// These are available to the routing code below, but also to any 
+// These are available to the routing code below, but also to any
 // classes defined in autoloaded definitions
 
-$f3 = require('../../../AboveWebRoot/fatfree-master/lib/base.php');
+$f3 = require('/home/'.get_current_user().'/AboveWebRoot/fatfree-master/lib/base.php');
 
 // autoload Controller class(es) and anything hidden above web root, e.g. DB stuff
-$f3->set('AUTOLOAD','autoload/;../../../AboveWebRoot/autoload/');		
+$f3->set('AUTOLOAD','autoload/;/home/'.get_current_user().'/AboveWebRoot/autoload/');
+
 
 $db = DatabaseConnection::connect();		// defined as autoloaded class in AboveWebRoot/autoload/
 $f3->set('DB', $db);
@@ -53,9 +54,9 @@ $f3->route('POST /simpleform',
     $formdata["location"] = $f3->get('POST.location');		// whatever was called "colour" on the form
   	$controller = new SimpleController;
     $controller->putIntoDatabase($formdata);
-  	
+
 	$f3->set('formData',$formdata);		// set info in F3 variable for access in response template
-	
+
     $f3->set('html_title','Simple Example Response');
 	$f3->set('content','response.html');
 	echo template::instance()->render('layout.html');
@@ -66,7 +67,7 @@ $f3->route('GET /dataView',
   function($f3) {
   	$controller = new SimpleController;
     $alldata = $controller->getData();
-    
+
     $f3->set("dbData", $alldata);
     $f3->set('html_title','Viewing the data');
     $f3->set('content','dataView.html');
@@ -78,7 +79,7 @@ $f3->route('GET /editView',				// exactly the same as dataView, apart from the t
   function($f3) {
   	$controller = new SimpleController;
     $alldata = $controller->getData();
-    
+
     $f3->set("dbData", $alldata);
     $f3->set('html_title','Viewing the data');
     $f3->set('content','editView.html');
@@ -102,4 +103,3 @@ $f3->route('POST /editView',		// this is used when the form is submitted, i.e. m
 $f3->run();
 
 ?>
-
