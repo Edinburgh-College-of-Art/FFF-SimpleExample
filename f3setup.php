@@ -1,8 +1,10 @@
 <?php
-$f3 = require('/home/'.get_current_user().'/AboveWebRoot/fatfree-master/lib/base.php');
+// $home = dirname($_SERVER['DOCUMENT_ROOT']);
+$home = '/home/'.get_current_user()
+$f3 = require($home.'/AboveWebRoot/fatfree-master/lib/base.php');
 
 // autoload Controller class(es) and anything hidden above web root, e.g. DB stuff
-$f3->set('AUTOLOAD','autoload/;/home/'.get_current_user().'/AboveWebRoot/autoload/');
+$f3->set('AUTOLOAD','autoload/;'.$home.'/AboveWebRoot/autoload/');
 
 $db = DatabaseConnection::connect();		// defined as autoloaded class in AboveWebRoot/autoload/
 $f3->set('DB', $db);

@@ -8,7 +8,7 @@
 // These are available to the routing code below, but also to any
 // classes defined in autoloaded definitions
 
-$$f3 = require('/home/'.get_current_user().'/AboveWebRoot/fatfree-master/lib/base.php');
+$f3 = require('/home/'.get_current_user().'/AboveWebRoot/fatfree-master/lib/base.php');
 
 $f3->set('DEBUG',3);		// set maximum debug level
 $f3->set('UI','ui/');		// folder for View templates
