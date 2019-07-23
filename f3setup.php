@@ -1,6 +1,6 @@
 <?php
 // $home = dirname($_SERVER['DOCUMENT_ROOT']);
-$home = '/home/'.get_current_user()
+$home = '/home/'.get_current_user();
 $f3 = require($home.'/AboveWebRoot/fatfree-master/lib/base.php');
 
 // autoload Controller class(es) and anything hidden above web root, e.g. DB stuff
